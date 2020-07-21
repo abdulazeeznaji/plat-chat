@@ -5,7 +5,7 @@ import React from 'react';
 function Nav(props) {
   const logged_out_nav = (
     <ul>
-      <li>login</li>
+      <li onClick={() => props.display_form('login')}>login</li>
       <li>signup</li>
     </ul>
   );
