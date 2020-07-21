@@ -2,7 +2,7 @@
 # Create your models here.
 from __future__ import unicode_literals
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager,\
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
     PermissionsMixin
 
 class MyUserManager(BaseUserManager):
@@ -18,5 +18,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
      Model that represents an user.
      """
-    user_name = models.CharField(_('First Name'), max_length=50)
-    email = models.EmailField(_('Email address'), unique=True)
+    user_name = models.CharField(max_length=50)
+    email = models.EmailField(unique=True)
+    USERNAME_FIELD = 'email'
+
+
+
+class UserProfile(models.Model):
+    user = models.ForeignKey(User, unique=True)
+    address = models.CharField(max_length=140)
+    image = models.ImageField(upload_to='thumbpath', blank=True)
