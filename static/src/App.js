@@ -10,7 +10,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            displayed_form: ''
+            displayed_form: '',
+
         };
     }
 
@@ -21,12 +22,32 @@ class App extends Component {
         });
     };
 
+    handle_login = (e, data) => {
+    e.preventDefault();
+    fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(json => {
+        localStorage.setItem('token', json.token);
+        this.setState({
+          logged_in: true,
+          displayed_form: '',
+          username: json.user.username
+        });
+      });
+  };
+
     // Render method
     render() {
         let form;
         switch (this.state.displayed_form) {
             case 'login':
-                form = <LoginForm/>;
+                form = <LoginForm handle_login={this.handle_login} />;
         }
         return (
             <div className="App">
