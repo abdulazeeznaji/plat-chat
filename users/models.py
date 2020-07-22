@@ -15,6 +15,11 @@ class MyUserManager(BaseUserManager):
 
         return user
 
+    def create_superuser(self, email, password=None, user_name='',  **extra_fields):
+        return self._create_user(email, password, user_name,
+                                 **extra_fields)
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     """
      Model that represents an user.
@@ -22,7 +27,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     user_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     USERNAME_FIELD = 'email'
-
+    objects = MyUserManager()
 
 
 class UserProfile(models.Model):
