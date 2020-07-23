@@ -24,7 +24,7 @@ class App extends Component {
 
     handle_login = (e, data) => {
     e.preventDefault();
-    fetch('', {
+    fetch('http://localhost:8000/token-auth/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -33,11 +33,12 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(json => {
+          console.log(json)
         localStorage.setItem('token', json.token);
         this.setState({
           logged_in: true,
           displayed_form: '',
-          username: json.user.username
+          username: json.token
         });
       });
   };
