@@ -66,6 +66,11 @@ REST_FRAMEWORK = {
     ),
 }
 
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://localhost:8080',
+]
 ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
@@ -138,3 +143,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER':
+            'rest_framework_jwt.utils.jwt_response_payload_handler',
+}
