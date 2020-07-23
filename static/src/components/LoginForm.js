@@ -1,44 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 class LoginForm extends React.Component {
-  state = {
-    username: '',
-    password: ''
-  };
+    state = {
+        email: '',
+        password: ''
+    };
 
-  handle_change = e => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState(prevstate => {
-      const newState = { ...prevstate };
-      newState[name] = value;
-      return newState;
-    });
-  };
+    handle_change = e => {
+        const name = e.target.name;
+        const value = e.target.value;
+        this.setState(prevstate => {
+            const newState = { ...prevstate };
+            newState[name] = value;
+            return newState;
+        });
+    };
 
-  render() {
-    return (
-      <form onSubmit={e => this.props.handle_login(e, this.state)}>
-        <h4>Log In</h4>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          value={this.state.username}
-          onChange={this.handle_change}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          value={this.state.password}
-          onChange={this.handle_change}
-        />
-        <input type="submit" />
-      </form>
-    );
-  }
+    render() {
+        return (
+            <MuiThemeProvider>
+                <Paper zDepth={2} style={{alignText: 'center', padding:'2em'}}>
+                    <TextField
+                        type="text"
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.handle_change}
+                        floatingLabelText="username" fullWidth={true}/>
+                    <br/>
+                    <TextField
+                        type="password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handle_change}
+                        floatingLabelText="Password" fullWidth={true} />
+                    <br/>
+                    <div>
+                        <RaisedButton primary={true} style={{marginLeft: 'auto',marginRight: 'auto', display: 'block'}} label="Login" onClick={e => this.props.handle_login(e, this.state)}/>
+                    </div>
+                </Paper>
+            </MuiThemeProvider>
+
+        );
+    }
 }
 
 export default LoginForm;
