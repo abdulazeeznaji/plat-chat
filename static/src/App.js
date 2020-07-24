@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Nav from './components/Nav';
 import LoginForm from './components/LoginForm';
-
+import Posts from './components/Posts'
 
 
 class App extends Component {
@@ -11,6 +11,11 @@ class App extends Component {
         super(props);
         this.state = {
             displayed_form: '',
+            posts:[{
+                id:1,
+                image_url:'https://images.unsplash.com/photo-1521336575822-6da63fb45455?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+                body:"Hi this is my first post yaaay! "
+            }]
 
         };
     }
@@ -78,8 +83,12 @@ class App extends Component {
                     display_form={this.display_form}
                 />
                 {form}
-                <header className="App-header">
-                </header>
+                <div style={{ padding: 10 }}>
+                    <div style={{ maxWidth: '500px', margin: '0 auto', paddingTop: '20px'}}>
+                        {this.state.posts.map(post => <Posts key={post.id} post={post} />)}
+                    </div>
+                </div>
+
             </div>
         );
     }
