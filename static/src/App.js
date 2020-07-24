@@ -26,11 +26,10 @@ class App extends Component {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify()
         })
             .then(res => res.json())
             .then(json => {
-                console.log(json)
                 localStorage.setItem('token', json.token);
                 this.setState({
                     posts:json.posts
