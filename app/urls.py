@@ -21,5 +21,6 @@ urlpatterns = [
     url('users/', include('users.urls')),
     url(r'^admin/', admin.site.urls),
     url('token-auth/', obtain_jwt_token),
+    url('posts/', include('posts.urls')),
 
 ]
