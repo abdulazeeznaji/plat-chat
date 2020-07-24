@@ -15,6 +15,29 @@ class App extends Component {
         };
     }
 
+    componentDidMount(){
+        this.fetchPosts()
+    }
+
+// Fetch post function
+    fetchPosts(){
+        fetch('', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(json => {
+                console.log(json)
+                localStorage.setItem('token', json.token);
+                this.setState({
+                    posts:json.posts
+                });
+            });
+    }
+
     // Display the required form
     display_form = form => {
         this.setState({
