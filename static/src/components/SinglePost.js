@@ -1,10 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
-import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import DeleteIcon from '@material-ui/icons/Delete'
 import red from '@material-ui/core/colors/red';
+
 
 
 
@@ -30,7 +30,7 @@ class SinglePost extends Component {
 	render() {
 		const { post, deletePost } = this.props;
 		return(
-			<Panel>
+					<Panel>
 				<Grid container style={{margin: 10}}>
 					<Grid item xs={10} sm={10} md={10}>
 						<Typography style={{fontSize: 18}}>{post.body}</Typography>
@@ -39,10 +39,6 @@ class SinglePost extends Component {
 						<Delete nativeColor={red[600]} onClick={() => deletePost(post.id)}/>
 					</Grid>
 				</Grid>
-				<Fragment>
-					<CardMedia style={{cursor: 'pointer', margin: '-5px', height: 0, paddingTop: '56.25%'}}
-							   title="Media"/>
-				</Fragment>
 			</Panel>
 		);
 	}
