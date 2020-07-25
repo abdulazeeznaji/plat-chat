@@ -30,7 +30,7 @@ class SinglePost extends Component {
 	render() {
 		const { post, deletePost } = this.props;
 		return(
-					<Panel>
+			<Panel>
 				<Grid container style={{margin: 10}}>
 					<Grid item xs={10} sm={10} md={10}>
 						<Typography style={{fontSize: 18}}>{post.body}</Typography>
