@@ -1,7 +1,8 @@
 from django.conf.urls import url
-from .views import get_posts
+from posts import views
 
 
 urlpatterns = [
-    url('', get_posts)
+    url(r'', views.get_posts),
+
 ]
