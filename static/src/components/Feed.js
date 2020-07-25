@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SinglePost from './SinglePost';
+import Posts from './Posts';
 import CreatePost from './CreatePost';
 import Typography from '@material-ui/core/Typography';
 import Error from '@material-ui/icons/Error';
@@ -35,7 +35,7 @@ class Feed extends Component {
         this.setState({ feed });
     };
 
-    renderPosts = (posts) => posts.map(post => <SinglePost post={post} />);
+    renderPosts = (posts) => posts.map(post => <Posts post={post} deletePost={this.deletePost}  />);
 
 
     render() {
