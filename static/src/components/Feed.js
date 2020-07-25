@@ -31,6 +31,21 @@ class Feed extends Component {
 
     }
 
+    deletePost = (posts_id) => {
+        fetch('http://localhost:8000/posts/api/posts/' + posts_id, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${localStorage.getItem('token')}`
+
+            },
+        })
+            .then(res => res.json())
+            .then(json => {
+                // Render successful deleting message
+            })
+    };
+
     updatePosts = (feed) => {
         this.setState({ feed });
     };
