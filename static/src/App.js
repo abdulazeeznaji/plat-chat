@@ -55,13 +55,13 @@ class App extends Component {
         }
         return (
             <div className="App">
-                {form}
                 <Header           logged_in={this.state.logged_in}
                                   display_form={this.display_form}
                                   handle_logout={this.handle_logout}
 
                 />
-                <Feed/>
+                {form}
+                {this.state.logged_in ? <Feed/> :  <LoginForm handle_login={this.handle_login} /> }
             </div>
         );
     }
