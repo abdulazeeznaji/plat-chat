@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Nav from './components/Nav';
 import LoginForm from './components/LoginForm';
-import Posts from './components/Posts'
+import Feed from './components/Feed';
 
 
 class App extends Component {
@@ -12,31 +12,7 @@ class App extends Component {
         this.state = {
             displayed_form: '',
             posts:[]
-
         };
-    }
-
-    componentDidMount(){
-        this.fetchPosts()
-    }
-
-// Fetch post function
-    fetchPosts(){
-        fetch('http://localhost:8000/posts/', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `JWT ${localStorage.getItem('token')}`
-
-            },
-            body: JSON.stringify()
-        })
-            .then(res => res.json())
-            .then(json => {
-                this.setState({
-                    posts:json
-                });
-            });
     }
 
     // Display the required form
@@ -80,12 +56,7 @@ class App extends Component {
                     display_form={this.display_form}
                 />
                 {form}
-                <div style={{ padding: 10 }}>
-                    <div style={{ maxWidth: '500px', margin: '0 auto', paddingTop: '20px'}}>
-                        {this.state.posts.map(post => <Posts key={post.id} post={post} />)}
-                    </div>
-                </div>
-
+                <Feed/>
             </div>
         );
     }
