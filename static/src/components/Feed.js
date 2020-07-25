@@ -32,7 +32,7 @@ class Feed extends Component {
     }
 
     deletePost = (posts_id) => {
-        fetch('http://localhost:8000/posts/api/posts/' + posts_id, {
+        fetch('http://localhost:8000/posts/' + posts_id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
