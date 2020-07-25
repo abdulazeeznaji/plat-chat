@@ -1,8 +1,7 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 
 class LoginForm extends React.Component {
@@ -23,27 +22,27 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <MuiThemeProvider>
-                <Paper zDepth={2} style={{alignText: 'center', padding:'2em'}}>
+                <Paper style={{alignText: 'center', padding:'2em'}}>
                     <TextField
                         type="text"
-                        name="email"
+                        label="email"
                         value={this.state.email}
                         onChange={this.handle_change}
-                        floatingLabelText="username" fullWidth={true}/>
+                        fullWidth={true}/>
                     <br/>
                     <TextField
                         type="password"
-                        name="password"
+                        label="password"
                         value={this.state.password}
                         onChange={this.handle_change}
-                        floatingLabelText="Password" fullWidth={true} />
+                        fullWidth={true} />
                     <br/>
                     <div>
-                        <RaisedButton primary={true} style={{marginLeft: 'auto',marginRight: 'auto', display: 'block'}} label="Login" onClick={e => this.props.handle_login(e, this.state)}/>
+                        <Button color="primary" style={{marginLeft: 'auto',marginRight: 'auto', display: 'block'}} onClick={e => this.props.handle_login(e, this.state)}>
+                            Login
+                        </Button>
                     </div>
                 </Paper>
-            </MuiThemeProvider>
 
         );
     }
