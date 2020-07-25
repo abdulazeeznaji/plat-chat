@@ -21,7 +21,10 @@ class App extends Component {
             displayed_form: form
         });
     };
-
+    handle_logout = () => {
+        localStorage.removeItem('token');
+        this.setState({ logged_in: false, username: '' });
+    };
     handle_login = (e, data) => {
         e.preventDefault();
         fetch('http://localhost:8000/token-auth/', {
@@ -54,7 +57,10 @@ class App extends Component {
             <div className="App">
                 {form}
                 <Header           logged_in={this.state.logged_in}
-                                  display_form={this.display_form}/>
+                                  display_form={this.display_form}
+                                  handle_logout={this.handle_logout}
+
+                />
                 <Feed/>
             </div>
         );

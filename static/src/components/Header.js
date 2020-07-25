@@ -34,7 +34,12 @@ export default function Header(props) {
                         Plat-Chat
                     </Typography>
                     {props.logged_in ?
-                        <Button onClick={() => props.display_form('login')} color="inherit">Login</Button> : <h1> </h1>
+                        <Button onClick={props.handle_logout} color="inherit">Logout</Button>
+                        :  <div>
+                            <Button onClick={() => props.display_form('login')} color="inherit">Login</Button>
+                            <Button onClick={() => props.display_form('login')} color="inherit">Signup</Button>
+                        </div>
+
                     }
                 </Toolbar>
             </AppBar>
