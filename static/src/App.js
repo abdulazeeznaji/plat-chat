@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Nav from './components/Nav';
 import LoginForm from './components/LoginForm';
 import Feed from './components/Feed';
-
+import Header from './components/Header';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             displayed_form: '',
-            posts:[]
+            posts:[],
+            logged_in: localStorage.getItem('token') ? true : false,
+
         };
     }
 
@@ -52,10 +52,9 @@ class App extends Component {
         }
         return (
             <div className="App">
-                <Nav
-                    display_form={this.display_form}
-                />
                 {form}
+                <Header           logged_in={this.state.logged_in}
+                                  display_form={this.display_form}/>
                 <Feed/>
             </div>
         );
