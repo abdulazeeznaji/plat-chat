@@ -11,11 +11,7 @@ class App extends Component {
         super(props);
         this.state = {
             displayed_form: '',
-            posts:[{
-                id:1,
-                image_url:'https://images.unsplash.com/photo-1521336575822-6da63fb45455?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-                body:"Hi this is my first post yaaay! "
-            }]
+            posts:[]
 
         };
     }
@@ -26,18 +22,19 @@ class App extends Component {
 
 // Fetch post function
     fetchPosts(){
-        fetch('', {
-            method: 'POST',
+        fetch('http://localhost:8000/posts/', {
+            method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${localStorage.getItem('token')}`
+
             },
             body: JSON.stringify()
         })
             .then(res => res.json())
             .then(json => {
-                localStorage.setItem('token', json.token);
                 this.setState({
-                    posts:json.posts
+                    posts:json
                 });
             });
     }
