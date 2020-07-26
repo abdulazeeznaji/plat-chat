@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import routes from './routes';
+
+const token = sessionStorage.getItem('token');
+if (token !== null) {
+    // store.dispatch(authLoginUserSuccess(token));
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      {routes}
   </React.StrictMode>,
   document.getElementById('root')
 );
