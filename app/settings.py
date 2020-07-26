@@ -113,7 +113,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'flatchat',
+        'NAME': 'platchat',
         'USER': 'root',
         'HOST': 'localhost',
         'PORT': '',
