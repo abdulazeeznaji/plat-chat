@@ -16,11 +16,16 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework_jwt.views import obtain_jwt_token
+from django.views.decorators.cache import cache_page
+from django.conf import settings
+from django.views.decorators.cache import cache_page
+from .views import IndexView
 
 urlpatterns = [
     url('users/', include('users.urls')),
     url(r'^admin/', admin.site.urls),
     url('token-auth/', obtain_jwt_token),
     url('posts/', include('posts.urls')),
+    url(r'^', cache_page(settings.PAGE_CACHE_SECONDS)(IndexView.as_view()), name='index'),
 
 ]
