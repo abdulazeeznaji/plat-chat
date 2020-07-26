@@ -13,7 +13,7 @@ class Feed extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8000/posts/', {
+        fetch(' http://127.0.0.1:8000/posts/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ class Feed extends Component {
     }
 
     deletePost = (posts_id) => {
-        fetch('http://localhost:8000/posts/' + posts_id, {
+        fetch(' http://127.0.0.1:8000/posts/' + posts_id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
