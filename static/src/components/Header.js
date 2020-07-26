@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+import { browserHistory as history } from 'react-router';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,13 +37,14 @@ export default function Header(props) {
                     {props.logged_in ?
                         <Button onClick={props.handle_logout} color="inherit">Logout</Button>
                         :  <div>
-                            <Button onClick={() => props.display_form('login')} color="inherit">Login</Button>
-                            <Button onClick={() => props.display_form('login')} color="inherit">Signup</Button>
+                            <Button onClick={()=>{history.push('/login')}} color="inherit">Login</Button>
+                            <Button onClick={()=>{history.push('/signup')}} color="inherit">Signup</Button>
                         </div>
 
                     }
                 </Toolbar>
             </AppBar>
+
         </div>
     );
 }
