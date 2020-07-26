@@ -10,39 +10,54 @@ class LoginForm extends React.Component {
         password: ''
     };
 
-    handle_change = e => {
-        const name = e.target.name;
-        const value = e.target.value;
-        this.setState(prevstate => {
-            const newState = { ...prevstate };
-            newState[name] = value;
-            return newState;
-        });
+    handle_change = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+    };
+
+    handle_login = (e, data) => {
+        e.preventDefault();
+        fetch('http://localhost:8000/token-auth/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(json => {
+                localStorage.setItem('token', json.token);
+                this.setState({
+                    logged_in: true,
+                    username: json.token
+                });
+            });
     };
 
     render() {
         return (
-                <Paper style={{alignText: 'center', padding:'2em'}}>
-                    <TextField
-                        type="text"
-                        label="email"
-                        value={this.state.email}
-                        onChange={this.handle_change}
-                        fullWidth={true}/>
-                    <br/>
-                    <TextField
-                        type="password"
-                        label="password"
-                        value={this.state.password}
-                        onChange={this.handle_change}
-                        fullWidth={true} />
-                    <br/>
-                    <div>
-                        <Button color="primary" style={{marginLeft: 'auto',marginRight: 'auto', display: 'block'}} onClick={e => this.props.handle_login(e, this.state)}>
-                            Login
-                        </Button>
-                    </div>
-                </Paper>
+            <Paper style={{alignText: 'center', padding:'2em'}}>
+                <TextField
+                    type="text"
+                    label="email"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handle_change}
+                    fullWidth={true}/>
+                <br/>
+                <TextField
+                    type="password"
+                    label="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handle_change}
+                    fullWidth={true} />
+                <br/>
+                <div>
+                    <Button color="primary" style={{marginLeft: 'auto',marginRight: 'auto', display: 'block'}} onClick={e => this.handle_login(e, this.state)}>
+                        Login
+                    </Button>
+                </div>
+            </Paper>
 
         );
     }
