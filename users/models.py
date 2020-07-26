@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
     PermissionsMixin
+from django.utils.translation import ugettext_lazy as _
 
 
 class MyUserManager(BaseUserManager):
@@ -24,6 +25,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
      Model that represents an user.
      """
+    is_staff = models.BooleanField(_('staff status'), default=False)
     user_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     USERNAME_FIELD = 'email'
