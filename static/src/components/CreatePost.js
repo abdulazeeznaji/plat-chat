@@ -36,13 +36,14 @@ class CreatePost extends Component {
 	};
 
 	handleSubmit = event => {
-		let url = `${SERVER_URL}/posts`;
+		let url = `${SERVER_URL}/posts/`;
+
 		event.preventDefault();
 		let obj = {
 			body: this.state.post,
 			user:1
 		};
-		fetch('http://127.0.0.1:8000/posts/', {
+		fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
