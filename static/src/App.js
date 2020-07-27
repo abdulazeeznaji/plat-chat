@@ -13,6 +13,19 @@ class App extends Component {
         };
     }
 
+    componentDidMount() {
+        // if (this.state.logged_in) {
+        //     fetch(' http://127.0.0.1:8000/users/current_user/', {
+        //         headers: {
+        //             Authorization: `JWT ${localStorage.getItem('token')}`
+        //         }
+        //     })
+        //         .then(res => res.json())
+        //         .then(json => {
+        //             this.setState({ username: json.username });
+        //         });
+        // }
+    }
     handle_logout = () => {
         localStorage.removeItem('token');
         this.setState({ logged_in: false, username: '' });
