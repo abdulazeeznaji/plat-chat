@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import { browserHistory as history } from 'react-router';
 
 
 class LoginForm extends React.Component {
@@ -31,6 +32,8 @@ class LoginForm extends React.Component {
                     username: json.token
                 });
             });
+                history.push(`/feed`);
+
     };
 
     render() {
