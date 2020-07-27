@@ -46,8 +46,9 @@ class Feed extends Component {
             })
     };
 
-    updatePosts = (feed) => {
-        this.setState({ feed });
+    updatePosts = (posts) => {
+
+        this.setState({ posts });
     };
 
     renderPosts = (posts) => posts.map(post => <Posts post={post} deletePost={this.deletePost}  />);

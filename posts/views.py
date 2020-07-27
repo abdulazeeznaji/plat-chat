@@ -17,9 +17,12 @@ def get_posts(request):
     elif request.method == 'POST':
         posts_data = JSONParser().parse(request)
         post_serializer = PostsSerializer(data=posts_data)
+        posts = Posts.objects.all()
+        posts_serializer = PostsSerializer(posts, many=True)
+
         if post_serializer.is_valid():
             post_serializer.save()
-            return JsonResponse(post_serializer.data, status=status.HTTP_201_CREATED)
+            return JsonResponse(posts_serializer.data,  safe=False)
         return JsonResponse(post_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

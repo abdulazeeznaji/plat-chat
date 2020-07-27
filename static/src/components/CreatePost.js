@@ -48,12 +48,8 @@ class CreatePost extends Component {
 		})
 			.then(res => res.json())
 			.then(json => {
-				localStorage.setItem('token', json.token);
-				this.setState({
-					logged_in: true,
-					displayed_form: '',
-					username: json.username
-				});
+				this.setState({ post: ''});
+				this.props.updatePosts(json)
 			});
 	};
 
