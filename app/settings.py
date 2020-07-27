@@ -113,9 +113,9 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'platchat',
-        'USER': 'root',
-        'PASSWORD': 'QWEqwe!1',
+        'NAME': 'heroku_899dd9aa66c34a6',
+        'USER': 'bc3ededeb2779b',
+        'PASSWORD': '8c74295d',
         'HOST': 'us-cdbr-east-02.cleardb.com',
         'PORT': ''
     }
