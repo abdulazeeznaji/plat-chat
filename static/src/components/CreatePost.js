@@ -42,7 +42,7 @@ class CreatePost extends Component {
 			body: this.state.post,
 			user:1
 		};
-		fetch(url, {
+		fetch('http://127.0.0.1:8000/posts/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
