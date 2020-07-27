@@ -29,7 +29,7 @@ class App extends Component {
     handle_logout = () => {
         localStorage.removeItem('token');
         this.setState({ logged_in: false, username: '' });
-        history.push('/login');
+        history.push('/');
     };
 
 

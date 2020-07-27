@@ -29,7 +29,7 @@ export default function requireAuthentication(Component) {
     render() {
       return (
         <div>
-          {true === true
+          {this.state.logged_in === true
             ? <Component {...this.props}/>
             : null
           }
