@@ -6,6 +6,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Button from "@material-ui/core/Button";
 import axios from 'axios';
 import styled from 'styled-components';
+import {SERVER_URL} from '../utils/config';
+
 
 const FormControl = styled(FormCntrl)`
 	margin: 10px;
@@ -24,7 +26,7 @@ class SignUp extends Component {
 
 	handleOnSubmit = (event) => {
 		event.preventDefault();
-		axios.post(`http://localhost:4000/signup`, {person: this.state})
+		axios.post(`${SERVER_URL}/users/users`, {person: this.state})
 			.then()
 			.catch();
 	};

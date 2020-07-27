@@ -4,6 +4,8 @@ import CreatePost from './CreatePost';
 import Typography from '@material-ui/core/Typography';
 import Error from '@material-ui/icons/Error';
 import indigo from '@material-ui/core/colors/indigo';
+import {SERVER_URL} from '../utils/config';
+
 
 class Feed extends Component {
 
@@ -13,7 +15,7 @@ class Feed extends Component {
     }
 
     componentDidMount() {
-        fetch(' http://127.0.0.1:8000/posts/', {
+        fetch(`${SERVER_URL}/posts/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +34,7 @@ class Feed extends Component {
     }
 
     deletePost = (posts_id) => {
-        fetch(' http://127.0.0.1:8000/posts/' + posts_id, {
+        fetch(`${SERVER_URL}/posts/` + posts_id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

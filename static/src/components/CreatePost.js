@@ -4,6 +4,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
+import {SERVER_URL} from '../utils/config';
+
 
 const style = {
 	form: {
@@ -34,12 +36,13 @@ class CreatePost extends Component {
 	};
 
 	handleSubmit = event => {
+		let url = `${SERVER_URL}/posts`;
 		event.preventDefault();
 		let obj = {
 			body: this.state.post,
 			user:1
 		};
-		fetch('http://127.0.0.1:8000/posts/', {
+		fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

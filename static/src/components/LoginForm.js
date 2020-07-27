@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { browserHistory as history } from 'react-router';
+import {SERVER_URL} from '../utils/config';
 
 
 class LoginForm extends React.Component {
@@ -17,7 +18,7 @@ class LoginForm extends React.Component {
 
     handle_login = (e, data) => {
         e.preventDefault();
-        fetch(' http://127.0.0.1:8000/token-auth/', {
+        fetch(`${SERVER_URL}/token-auth/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
