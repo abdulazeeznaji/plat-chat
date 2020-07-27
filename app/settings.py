@@ -70,12 +70,12 @@ AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
     ),
 }
 
@@ -115,8 +115,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'platchat',
         'USER': 'root',
-        'HOST': 'localhost',
-        'PORT': '',
+        'PASSWORD': 'QWEqwe!1',
+        'HOST': 'us-cdbr-east-02.cleardb.com',
+        'PORT': ''
     }
 }
 
@@ -154,8 +155,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-JWTJWT_AUTH = {
-    'JWT_PAYLOAD_HANDLER': 'rest_framework_jwt.utils.jwt_payload_handler',
-}
+# JWTJWT_AUTH = {
+#     'JWT_PAYLOAD_HANDLER': 'rest_framework_jwt.utils.jwt_payload_handler',
+# }
 
 CORS_ORIGIN_ALLOW_ALL = True
