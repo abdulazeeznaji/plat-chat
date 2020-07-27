@@ -32,4 +32,7 @@ def post_detail(request, pk):
 
     if request.method == 'DELETE':
         post.delete()
-        return JsonResponse({'message': 'Tutorial was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+        posts = Posts.objects.all()
+        posts_serializer = PostsSerializer(posts, many=True)
+
+        return JsonResponse(posts_serializer.data, safe=False)
