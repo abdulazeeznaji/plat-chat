@@ -42,7 +42,7 @@ class Feed extends Component {
         })
             .then(res => res.json())
             .then(json => {
-                // Render successful deleting message
+                this.setState({posts: json})
             })
     };
 
