@@ -154,9 +154,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-
 JWTJWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'app.utils.my_jwt_response_handler'
+    'JWT_PAYLOAD_HANDLER': 'rest_framework_jwt.utils.jwt_payload_handler',
 }
 
 CORS_ORIGIN_ALLOW_ALL = True

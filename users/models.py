@@ -31,6 +31,30 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     objects = MyUserManager()
 
+    def __str__(self):
+        """
+        Unicode representation for an user model.
+
+        :return: string
+        """
+        return self.email
+
+    def get_full_name(self):
+        """
+        Return the first_name plus the last_name, with a space in between.
+
+        :return: string
+        """
+        return "{0} {1}".format(self.user_name, self.user_name)
+
+    def get_short_name(self):
+        """
+        Return the first_name.
+
+        :return: string
+        """
+        return self.user_name
+
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
