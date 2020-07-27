@@ -37,7 +37,7 @@ class CreatePost extends Component {
 		event.preventDefault();
 		let obj = {
 			body: this.state.post,
-			user:2
+			user:1
 		};
 		fetch('http://127.0.0.1:8000/posts/', {
 			method: 'POST',

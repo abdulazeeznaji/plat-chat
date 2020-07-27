@@ -8,8 +8,8 @@ import requireAuthentication from './utils/requireAuthentication';
 
 const routes = (
     <Router history={browserHistory}>
-        <Route path="/" component={requireAuthentication(App)}>
-            <IndexRoute component={requireAuthentication(Feed)}/>
+        <Route path="/" component={App}>
+            <IndexRoute component={Feed}/>
         </Route>
         <Route path="login" component={Login}/>
 
