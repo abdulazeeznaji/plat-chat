@@ -4,13 +4,14 @@ import Login from './components/LoginForm';
 import App from './App';
 import Feed from './components/Feed';
 import requireAuthentication from './utils/requireAuthentication';
-
+import Signup from './components/SignUp';
 
 const routes = (
     <Router history={browserHistory}>
-        <Route path="/" component={App}>
+        <Route path="/" component={requireAuthentication(App)}>
             <IndexRoute component={Feed}/>
         </Route>
+        <Route path="signup" component={Signup}/>
         <Route path="login" component={Login}/>
     </Router>
 );

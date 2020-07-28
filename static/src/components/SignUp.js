@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import axios from 'axios';
 import styled from 'styled-components';
 import {SERVER_URL} from '../utils/config';
+import { browserHistory as history } from 'react-router';
 
 
 const FormControl = styled(FormCntrl)`
@@ -17,7 +18,7 @@ const FormControl = styled(FormCntrl)`
 class SignUp extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {first_name: '', last_name: '', email: '', password: ''};
+		this.state = {user_name: '', email: '', password: ''};
 	}
 
 	handleChange = (event) => {
@@ -26,9 +27,24 @@ class SignUp extends Component {
 
 	handleOnSubmit = (event) => {
 		event.preventDefault();
-		axios.post(`${SERVER_URL}/users/users`, {person: this.state})
-			.then()
-			.catch();
+		fetch(`${SERVER_URL}/users/users/`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(this.state)
+		})
+			.then(res => res.json())
+			.then(json => {
+				localStorage.setItem('token', json.token);
+				this.setState({
+					logged_in: true,
+					username: json.username
+				});
+				history.push('/')
+			});
+
+
 	};
 
 	render() {
@@ -36,20 +52,17 @@ class SignUp extends Component {
 			<Card square style={{ padding: 30 }}>
 				<form onSubmit={this.handleOnSubmit} autoComplete="off">
 					<FormControl style={{ display: 'block', margin: 10 }}>
-						<InputLabel htmlFor="first_name">First Name</InputLabel>
-						<Input id="first_name" style={{ width: 400 }} value={this.state.first_name} onChange={this.handleChange}/>
+						<InputLabel htmlFor="first_name"> First Name </InputLabel>
+						<Input name='user_name' id="first_name" style={{ width: 400 }} value={this.state.first_name} onChange={this.handleChange}/>
 					</FormControl>
-					<FormControl style={{ display: 'block', margin: 10 }}>
-						<InputLabel htmlFor="last_name">Last Name</InputLabel>
-						<Input id="last_name" style={{ width: 400 }} value={this.state.last_name} onChange={this.handleChange}/>
-					</FormControl>
+
 					<FormControl style={{ display: 'block', margin: 10 }}>
 						<InputLabel htmlFor="email">Email</InputLabel>
-						<Input type="email" id="email" style={{ width: 400 }} value={this.state.email} onChange={this.handleChange}/>
+						<Input name='email' type="email" id="email" style={{ width: 400 }} value={this.state.email} onChange={this.handleChange}/>
 					</FormControl>
 					<FormControl style={{ display: 'block', margin: 10 }}>
 						<InputLabel htmlFor="password">Password</InputLabel>
-						<Input type="password" autoComplete="off" id="password" style={{ width: 400 }} value={this.state.password} onChange={this.handleChange}/>
+						<Input name='password' type="password" autoComplete="off" id="password" style={{ width: 400 }} value={this.state.password} onChange={this.handleChange}/>
 					</FormControl>
 					<Button type="submit" variant="outlined" style={{ margin: 10 }}>Create account</Button>
 				</form>
