@@ -193,7 +193,9 @@ export default function Header(props) {
                     <Typography variant="h6" className={classes.titlee}>
                     </Typography>
                     <Button onClick={()=>{history.push('/login')}} color="inherit">Login</Button>
-                    <Button onClick={()=>{history.push('/signup')}} color="inherit">Signup</Button>
+                    <Button onClick={()=>{history.push('/signup')}} color="inherit">
+                      
+                    </Button>
                   </Toolbar>
                 </AppBar>
               </div>

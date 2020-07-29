@@ -8,7 +8,7 @@ import Signup from './components/SignUp';
 
 const routes = (
     <Router history={browserHistory}>
-        <Route path="/" component={requireAuthentication(App)}>
+        <Route path="/" component={App}>
             <IndexRoute component={Feed}/>
         </Route>
         <Route path="signup" component={Signup}/>
